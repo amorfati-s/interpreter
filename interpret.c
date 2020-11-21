@@ -19,6 +19,7 @@ int main(int argc, char *argv[])
   int tot = 0;
   const char s[2] = " \t";
   char *token;
+  char temp[100]; 
 
   FILE *fp = fopen(argv[1], "r");
   while (fgets(line[i], LSIZ, fp))
@@ -31,7 +32,7 @@ int main(int argc, char *argv[])
   printf("\n The content in the file is : \n");
   for (i = 0; i < tot; ++i)
   {
-    printf(" %s\n", line[i]);
+    printf("%s\n", line[i]);
 
     /////////////////////////////////////////////////////////
     ///// I/O 
@@ -118,7 +119,10 @@ int main(int argc, char *argv[])
 
   printf("\n Looking for token : \n");
   //looking for token
-  token = strtok(line[1], s);
+  //strtok changes string input 
+
+  strcpy(temp, line[1]);
+  token = strtok(temp, s);
 
   while (token != NULL)
   {
