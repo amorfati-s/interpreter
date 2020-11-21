@@ -134,7 +134,7 @@ int main(int argc, char *argv[])
     printf(" %s", token);
     //token = strtok(NULL, s);
   
-  token = strtok
+  //token = strtok
 
   printf("\n");
   printf("\n");
