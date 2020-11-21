@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 short ax;
 short bx;
@@ -40,6 +41,7 @@ int main(int argc, char *argv[])
 
     /////////////////////////////////////////////////////////
     ///// I/O
+    /*
     if (strstr(line[i], "read"))
     {
       printf(" hi \n");
@@ -109,37 +111,56 @@ int main(int argc, char *argv[])
       printf("\n hi \n");
     }
   }
-  printf("\n");
 
-  fclose(fp);
+  */
+    printf("\n");
 
-  //checking if lines printed
-  printf("\n Checking if the lines are stored into my line array : \n");
-  printf(" %s\n", line[0]);
-  printf(" %s\n", line[1]);
-  printf(" %s\n", line[2]);
-  printf(" %s\n", line[3]);
+    fclose(fp);
 
-  printf("\n Looking for token : \n");
-  //looking for token
-  //strtok changes string input
+    //checking if lines printed
+    printf("\n Checking if the lines are stored into my line array : \n");
+    printf(" %s\n", line[0]);
+    printf(" %s\n", line[1]);
+    printf(" %s\n", line[2]);
+    printf(" %s\n", line[3]);
 
-  strcpy(temp, line[1]);
-  //printf("%s", temp);
-  //token = strtok(temp, s);
+    printf("\n Looking for token : \n");
+    //looking for token
+    //strtok changes string input
 
-  token = strtok_r(temp, s, &saveptr); 
-    //while (token != NULL)
-    //{
-    printf(" %s", token);
-    //token = strtok(NULL, s);
-  
-  //token = strtok
+    strcpy(temp, line[1]);
+    //printf("%s", temp);
+    token = strtok(temp, s);
 
-  printf("\n");
-  printf("\n");
-  return 0;
+    //token = strtok_r(temp, s, &saveptr);
+    while (token != NULL)
+    {
+      printf(" %s\n", token);
 
+      if (token == "read")
+      {
+        printf("it reads");
+
+        //token = strtok_r(temp, s, &saveptr);
+        token = strtok(0, " \n");
+        if (isdigit(token))
+        {
+          printf("is digit");
+        }
+        else
+        {
+          printf("not a digit");
+        }
+      }
+
+      token = strtok(NULL, s);
+    }
+    // token = strtok
+
+    printf("\n");
+    printf("\n");
+    return 0;
+  }
 }
 
 void reg(char array[], short ax, short bx, short cx, short dx)
